@@ -4,14 +4,14 @@
 
 | Column             | Type                | Options                    |
 |--------------------|---------------------|----------------------------|
-| nickname           | string              | null: false, unique:tru    |
+| nickname           | string              | null: false, unique:true   |
 | email              | string              | null: false, unique:true   |
 | encrypted_password | string              | null: false                |
-| first-name         | string              | null: false                |
-| last-name          | string              | null: false                |
-| first-kana_name    | string              | null: false                |
-| last-kana_name     | string              | null: false                |
-| date               | integer             | null: false                |
+| first_name         | string              | null: false                |
+| last_name          | string              | null: false                |
+| first_kana_name    | string              | null: false                |
+| last_kana_name     | string              | null: false                |
+| birthday           | date                | null: false                |
 
 ### Association
 
@@ -24,8 +24,9 @@
 |-------------------------------------|------------|-------------------|
 | title                               | string     | null: false       |
 | price                               | integer    | null: false       |
-| buy-item-info                       | text       | null: false       |
+| buy_item_info                       | text       | null: false       |
 | category                            | integer    | null: false       |
+| item_condition                      | integer    | null: false       |
 | user                                | references | foreign_key: true |
 
 ### Association
@@ -38,9 +39,9 @@
 
 | Column                   | Type       | Options           |
 |--------------------------|------------|-------------------|
-| credit-card-num          | integer    | null: false       |
-| expiration-date          | integer    | null: false       |
-| security-num             | integer    | null: false       |
+| credit_card_num          | integer    | null: false       |
+| expiration_date          | integer    | null: false       |
+| security_num             | integer    | null: false       |
 | item                     | references | foreign_key: true |
 | user                     | references | foreign_key: true |
 
@@ -50,16 +51,16 @@
 - belongs_to :user
 - has_one :shipping-address
 
-## shipping-address table
+## shipping_address table
 
 | Column                   | Type       | Options           |
 |--------------------------|------------|-------------------|
-| postal-cord              | integer    | null: false       |
-| prefecture               | string     | null: false       |
+| postal_cord              | string     | null: false       |
+| prefecture_id            | integer    | null: false       |
 | address                  | string     | null: false       |
-| building-name            | string     | null: false       |
-| phone-num                | string     | null: false       |
-| order_id                 | references | foreign_key: true |
+| building_name            | string     |                   |
+| phone_num                | string     | null: false       |
+| order                    | references | foreign_key: true |
 
 ### Association
 
