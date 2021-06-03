@@ -33,7 +33,7 @@
 
 - belongs_to :user
 - has_one :order
-- has_one : shipping-address
+- has_one : shipping_address
 
 ## orders table
 
