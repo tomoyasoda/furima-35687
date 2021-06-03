@@ -2,14 +2,16 @@
 
 ## users table
 
-| Column             | Type                | Options                 |
-|--------------------|---------------------|-------------------------|
-| nickname           | string              | null: false             |
-| email              | string              | null: false             |
-| password           | string              | null: false             |
-| name               | string              | null: false             |
-| kana_name          | string              | null: false             |
-| birthday           | integer             | null: false             |
+| Column             | Type                | Options                    |
+|--------------------|---------------------|----------------------------|
+| nickname           | string              | null: false, unique:tru    |
+| email              | string              | null: false, unique:true   |
+| encrypted_password | string              | null: false                |
+| first-name         | string              | null: false                |
+| last-name          | string              | null: false                |
+| first-kana_name    | string              | null: false                |
+| last-kana_name     | string              | null: false                |
+| date               | integer             | null: false                |
 
 ### Association
 
@@ -21,7 +23,7 @@
 | Column                              | Type       | Options           |
 |-------------------------------------|------------|-------------------|
 | title                               | string     | null: false       |
-| price                               | string     | null: false       |
+| price                               | integer    | null: false       |
 | buy-item-info                       | text       | null: false       |
 | category                            | integer    | null: false       |
 | user                                | references | foreign_key: true |
@@ -52,13 +54,12 @@
 
 | Column                   | Type       | Options           |
 |--------------------------|------------|-------------------|
-| postal-cord              | text       | null: false       |
-| prefecture               | text       | null: false       |
-| address                  | text       | null: false       |
-| building-name            | text       | null: false       |
-| phone-num                | integer    | null: false       |
-| item_id                  | references | foreign_key: true |
-| phone-num                | references | foreign_key: true |
+| postal-cord              | integer    | null: false       |
+| prefecture               | string     | null: false       |
+| address                  | string     | null: false       |
+| building-name            | string     | null: false       |
+| phone-num                | string     | null: false       |
+| order_id                 | references | foreign_key: true |
 
 ### Association
 
