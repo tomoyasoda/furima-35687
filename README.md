@@ -39,7 +39,6 @@
 
 | Column                   | Type       | Options           |
 |--------------------------|------------|-------------------|
-| credit_card_num          | integer    | null: false       |
 | expiration_date          | integer    | null: false       |
 | security_num             | integer    | null: false       |
 | item                     | references | foreign_key: true |
@@ -49,7 +48,7 @@
 
 - belongs_to :item
 - belongs_to :user
-- has_one :shipping-address
+- has_one :shipping_address
 
 ## shipping_address table
 
@@ -57,6 +56,7 @@
 |--------------------------|------------|-------------------|
 | postal_cord              | string     | null: false       |
 | prefecture_id            | integer    | null: false       |
+| municipality             | string     | null: false       |
 | address                  | string     | null: false       |
 | building_name            | string     |                   |
 | phone_num                | string     | null: false       |
@@ -64,6 +64,5 @@
 
 ### Association
 
-- belongs_to :item
 - belongs_to :order
 
