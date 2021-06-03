@@ -28,7 +28,7 @@
 | category_id                         | integer    | null: false       |
 | item_condition_id                   | integer    | null: false       |
 | item_charge_id                      | integer    | null: false       |
-| shipping_area_id                    | integer    | null: false       |
+| prefecture_id                       | integer    | null: false       |
 | shipping_day_id                     | integer    | null: false       |
 | user                                | references | foreign_key: true |
 
@@ -50,7 +50,7 @@
 - belongs_to :user
 - has_one :shipping_address
 
-## shipping_address table
+## shipping_addresses table
 
 | Column                   | Type       | Options           |
 |--------------------------|------------|-------------------|
