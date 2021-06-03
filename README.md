@@ -27,20 +27,20 @@
 | buy_item_info                       | text       | null: false       |
 | category                            | integer    | null: false       |
 | item_condition                      | integer    | null: false       |
+| item_charge                         | integer    | null: false       |
+| shipping_area                       | integer    | null: false       |
+| shipping_day                        | integer    | null: false       |
 | user                                | references | foreign_key: true |
 
 ### Association
 
 - belongs_to :user
 - has_one :order
-- has_one : shipping_address
 
 ## orders table
 
 | Column                   | Type       | Options           |
 |--------------------------|------------|-------------------|
-| expiration_date          | integer    | null: false       |
-| security_num             | integer    | null: false       |
 | item                     | references | foreign_key: true |
 | user                     | references | foreign_key: true |
 
