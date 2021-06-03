@@ -25,11 +25,11 @@
 | title                               | string     | null: false       |
 | price                               | integer    | null: false       |
 | buy_item_info                       | text       | null: false       |
-| category                            | integer    | null: false       |
-| item_condition                      | integer    | null: false       |
-| item_charge                         | integer    | null: false       |
-| shipping_area                       | integer    | null: false       |
-| shipping_day                        | integer    | null: false       |
+| category_id                         | integer    | null: false       |
+| item_condition_id                   | integer    | null: false       |
+| item_charge_id                      | integer    | null: false       |
+| shipping_area_id                    | integer    | null: false       |
+| shipping_day_id                     | integer    | null: false       |
 | user                                | references | foreign_key: true |
 
 ### Association
