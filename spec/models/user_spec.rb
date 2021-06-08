@@ -95,6 +95,41 @@ RSpec.describe User, type: :model do
         expect(@user.errors.full_messages).to include("Last kana name 全角カタカナを使用してください")
       end
 
+      it 'passwordは６文字以上でないと登録できないこと' do
+        @user.password = '00000'
+        @user.valid?
+        expect(@user.errors.full_messages).to include("Password confirmation doesn't match Password")
+      end
+
+      it 'passwordは英語のみでは登録できないこと' do
+        @user.password = 'hogehuga'
+        @user.valid?
+        expect(@user.errors.full_messages).to include("Password confirmation doesn't match Password")
+      end
+
+      it 'passwordは数値のみでは登録できないこと' do
+        @user.password = '000000'
+        @user.valid?
+        expect(@user.errors.full_messages).to include("Password confirmation doesn't match Password")
+      end
+
+      it 'passwordは全角では登録できないこと' do
+        @user.password = 'ホゲホゲホゲ'
+        @user.valid?
+        expect(@user.errors.full_messages).to include("Password confirmation doesn't match Password")
+      end
+
+      it 'last_nameが漢字・平仮名・カタカナ以外では登録できないこと' do
+        @user.last_name = 'hoge'
+        @user.valid?
+        expect(@user.errors.full_messages).to include("Last name 全角文字を使用してください")
+      end
+
+      it 'first_nameが漢字・平仮名・カタカナ以外では登録できないこと' do
+        @user.first_name = 'huga'
+        @user.valid?
+        expect(@user.errors.full_messages).to include("First name 全角文字を使用してください")
+      end
 
     end
   end
