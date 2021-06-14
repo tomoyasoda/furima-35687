@@ -12,7 +12,7 @@ RSpec.describe Item, type: :model do
       end
 
       it '- 販売価格は半角数字のみ保存可能であること'do
-      @item.price = '1000000'
+      @item.price = 1000000
       expect(@item).to be_valid
       end
     end
@@ -102,6 +102,14 @@ RSpec.describe Item, type: :model do
       @item.valid?
       expect(@item.errors.full_messages).to include("Price is not a number")
       end
+
+      it '- userが存在しないと登録できない'do
+      @item.user = nil
+      @item.valid?
+      expect(@item.errors.full_messages).to include("User must exist")
+
+      end
+
 
 
     end
