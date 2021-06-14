@@ -7,6 +7,10 @@ RSpec.describe Item, type: :model do
     end
 
     context '項目が入力できるとき' do
+      it '- 正しい値が入力されていれば保存可能であること'do
+      expect(@item).to be_valid
+      end
+
       it '- 販売価格は半角数字のみ保存可能であること'do
       @item.price = '1000000'
       expect(@item).to be_valid
@@ -80,6 +84,26 @@ RSpec.describe Item, type: :model do
       @item.valid?
       expect(@item.errors.full_messages).to include("Price must be less than or equal to 9999999")
       end
+
+      it '- 販売価格が全角文字では保存できないこと'do
+      @item.price = "ほげほげ"
+      @item.valid?
+      expect(@item.errors.full_messages).to include("Price is not a number")
+      end
+
+      it '- 販売価格が半角英数混合では保存できないこと'do
+      @item.price = "000aaa"
+      @item.valid?
+      expect(@item.errors.full_messages).to include("Price is not a number")
+      end
+
+      it '- 販売価格が半角英語だけでは保存できないこと'do
+      @item.price = "aaaaaa"
+      @item.valid?
+      expect(@item.errors.full_messages).to include("Price is not a number")
+      end
+
+
     end
   end
 
